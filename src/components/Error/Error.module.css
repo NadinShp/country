@@ -1,0 +1,16 @@
+.error {
+    text-align: center;
+    width: 100%;
+}
+
+.img_error {
+    width: 60%;
+}
+
+.icon_attribute {
+    color: #afafaf;
+    display: block;
+    font-size: .7rem;
+    margin-top: -2.5rem;
+    text-transform: capitalize;
+}

@@ -1,0 +1,1 @@
+export const region = (state) => state.region;

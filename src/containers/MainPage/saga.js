@@ -1,12 +1,13 @@
-import {all, takeLatest, call} from 'redux-saga/effects';
+import {all, takeLatest, call, put} from 'redux-saga/effects';
 import  MainPageService  from './service';
-import * as actions from './actions';
+import {getCountries} from './actions';
+import helper from './helpers';
 
 export function* getCountriesSaga(){
     try {
         const response = yield call(MainPageService.getCountries);
-        console.log(response);
-    // yield put(actions.getMainPageData.success(mappedData))
+        const countries = response.data.map(helper);
+        yield put(getCountries.success(countries));
     } catch(error) {
         console.log(error);
     };
@@ -14,6 +15,6 @@ export function* getCountriesSaga(){
 
 export function*  mainPageWatcherSaga(){
     yield all([
-        takeLatest(actions.getMainPageData.REQUEST, getCountriesSaga),
+        takeLatest(getCountries.REQUEST, getCountriesSaga),
     ])
 }

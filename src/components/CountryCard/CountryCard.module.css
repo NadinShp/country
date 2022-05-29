@@ -1,0 +1,26 @@
+.image {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    max-height: 160px;
+}
+
+.countryName {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1,03;
+    margin-bottom: 15px;
+}
+
+.wrapperItem {
+    padding: 20px;
+}
+
+.nameTypeInfo {
+    font-size: 14px;
+    font-weight: 400px;
+    line-height: 1,01;
+}
+.nameTypeInfo:not(:last-child) {
+    margin-bottom: 8px;
+}

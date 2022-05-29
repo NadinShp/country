@@ -1,0 +1,37 @@
+@import '../../global/styles/palette.css';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+.modeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.75rem 2%;
+    width: 10rem;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+.ion-icon {
+    font-size: 1.5rem;
+}
+.linkOnMainPage {
+    text-decoration: none;
+}
+button ion-icon[name='moon'] {
+    color: var(--color-text);
+}
