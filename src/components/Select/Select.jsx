@@ -40,25 +40,3 @@ const SelectRegion = () => {
     );
 };
 export default SelectRegion;
-// import {useState} from 'react';
-
-// const Selectors = () => {
-//     const [region, setRegion] = useState('Filter by region');
-//     const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
-//     return (
-//         <div>
-//             <select
-//                 value = {region}
-//                 onChange={(event) => setRegion(event.target.value)}
-//                 >
-//                     {regions.map((region) => (
-//                         <option region={region} key={region}>
-//                         {region}
-//                         </option>
-//                     ))}
-//             </select>
-//         </div>
-//     )
-// };
-
-// export default Selectors;
