@@ -1,5 +1,4 @@
 import {useSelector} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
 import mainPageSelectors from '../../containers/MainPage/selectors';
 import CountryCard from '../CountryCard';
 import {filteredCountriesByRegion} from './helper';
@@ -8,7 +7,6 @@ import filterSelector from '../Input/selectors';
 import  '../../global/styles/index.css';
 
 const CountryList = () => {
-    const navigate = useNavigate();
     const countries = useSelector(mainPageSelectors.countries);
     const filter = useSelector(filterSelector.filterValue);
     const chosenRegion = useSelector(region);
@@ -20,13 +18,10 @@ const CountryList = () => {
     if (filteredArr) {
         filteredCountriesByRegionAndName = filteredCountriesByRegion(filteredArr, chosenRegion);
     }
-    const onBtnClickHandler = (id) => {
-        navigate(id);
-    }
     return (
         <ul className='countryList'>
         {filteredCountriesByRegionAndName.map((country) => (
-            <CountryCard onClick={onBtnClickHandler} key={country.id} country={country} />
+            <CountryCard key={country.id} country={country} />
         ))}
         </ul>
     )

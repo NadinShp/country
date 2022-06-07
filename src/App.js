@@ -7,6 +7,7 @@ import {useDispatch} from 'react-redux';
 import {useState} from 'react';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme, GlobalStyles } from './theme';
+import {chooseTheme} from './components/AppBar/actions';
 import './global/styles/index.css';
 
 const NotFound = lazy(() => import('./containers/NotFound'));
@@ -23,8 +24,11 @@ function App() {
 
   const toggleTheme = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
-    console.log('chooseTheme');
   }
+  useEffect(() => {
+    dispatch(chooseTheme(chooseTheme(theme)));
+  }, [dispatch, setTheme, theme]);
+
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />

@@ -2,16 +2,18 @@ import '../../global/styles/index.css';
 import {useDispatch} from 'react-redux';
 import {chosenCountry} from '../CountryCard/actions';
 import style from './CountryCard.module.css';
+import {useNavigate} from 'react-router-dom';
 
-const CountryCard = ({country, onClick}) => {
+const CountryCard = ({country}) => {
     const dispatch = useDispatch();
-    const onCountryClick = () => {
+    const navigate = useNavigate();
+    const onBtnClickHandler = (id) => {
+        navigate(id);
         dispatch(chosenCountry(country));
-        onClick(country.id);
     }
-    const {flag, name, population, region, capital} = country;
+    const {flag, name, population, region, capital, id} = country;
     return(
-        <li className='itemCountry' onClick={onCountryClick}>
+        <li className='itemCountry' onClick={()=>onBtnClickHandler(id)}>
             <img className={style.image} src={flag} alt={name}/>
             <div className={style.wrapperItem}>
                 <p className={style.countryName}>{name}</p>

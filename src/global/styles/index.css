@@ -7,7 +7,7 @@ body {
   margin: 0;
   outline: none;
   box-sizing: border-box;
-  font-family: Montserrat, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 ul {
     list-style: none;
@@ -24,20 +24,22 @@ ul {
     border: none;
     outline: none;
     border-radius: 5px;
-}
-.countryList {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: -20px;
+    margin-bottom: 10px;
 }
 .itemCountry {
-    width: calc((100% - 60px) / 4);
-    margin-right: 20px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
     cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 1px 4px 4px 4px rgb(0 0 0 / 15%);
+    transform: scale(1);
+    translate: transform 700ms linear;
 }
-.itemCountry:nth-child(4n) {
-    margin-right: 0;
+.itemCountry:hover, .itemCountry:focus {
+    transform: scale(1.05);
+}
+.itemCountry img {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }
 .backBtn {
     display: flex;
@@ -49,12 +51,20 @@ ul {
     outline: none;
     box-shadow: 1px 4px 4px 4px rgb(0 0 0 / 15%);
     margin: 1rem 2px 2rem;
+    cursor: pointer;
+    transition: transform 700ms linear;
+}
+.backBtn:hover, .backBtn:focus {
+    transform: translateX(10px);
 }
 span.detailInfo{
     font-size: 14px;
     font-weight: 400;
 }
 .borderBtn {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
     padding: 2px 5px;
     font-size: 14px;
     font-weight: 400;
@@ -62,11 +72,108 @@ span.detailInfo{
     border: none;
     outline: none;
     box-shadow: 1px 2px 2px 2px rgb(0 0 0 / 15%);
+    translate: font-weight 700ms linear;
+}
+.borderBtn:hover, .borderBtn:focus {
+    font-weight: 600;
 }
 .bordersItem:not(:last-child) {
     margin-right: 7px;
     margin-bottom: 5px;
 }
-/* button ion-icon {
-    margin-right: 8px;
-} */
+.bordersItem{
+    margin-bottom: 7px;
+}
+.box {
+    border-radius: 5px;
+}
+.option {
+    cursor: pointer;
+    padding: 8px 12px;
+}
+.filterLabel {
+    cursor: pointer;
+}
+.selectBox {
+    position: absolute;
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: 3px 3px 5px rgb(0 0 0 / 5%);
+}
+.selectHeader {
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 20px 12px;
+    display: flex;
+    border-radius: 7px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 3px 3px 5px rgb(0 0 0 / 5%);
+    margin-bottom: 3px;
+    width: 100%;
+    max-width: 242px;
+}
+.borderBtn {
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+@media screen and (max-width: 499px) {
+    .itemCountry {
+        width: 100%;
+        max-width: 380px;
+    }
+    .wrapperHeader {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .selectHeader{
+        width: 100%;
+        max-width: 242px;
+    }
+}
+@media screen and (min-width: 500px) {
+    .countryList {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: -20px;
+    }
+    .selectHeader {
+        width: 242px;
+    }
+}
+@media screen and (min-width: 500px) and (max-width: 767px){
+    .itemCountry {
+        width: calc((100% - 30px) / 2);
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1239px) {
+    .itemCountry {
+        width: calc((100% - 45px) / 3);
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+    .filterByName {
+        margin-bottom: 0;
+    }
+}
+@media screen and (min-width: 1240px) {
+    .itemCountry {
+        width: calc((100% - 60px) / 4);
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+    .countryList {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: -20px;
+    }
+    .filterByName {
+        margin-bottom: 0;
+    }
+}

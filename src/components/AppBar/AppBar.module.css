@@ -1,6 +1,11 @@
 .wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
     margin-bottom: 20px;
+}
+@media screen and (min-width: 568px) {
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

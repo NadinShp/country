@@ -1,5 +1,4 @@
 import Container from '../Container';
-// import {memo} from 'react';
 import {Link} from 'react-router-dom';
 import style from './Header.module.css';
 import '../../global/styles/index.css';

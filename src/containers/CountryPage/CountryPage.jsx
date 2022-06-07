@@ -1,15 +1,16 @@
 import {useSelector} from 'react-redux';
-import {active} from './selectors';
 import mainPageSelectors from '../../containers/MainPage/selectors';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {valueFromObj, valueToString, valueInfo} from './helpers';
 import Container from '../../components/Container';
+import LinkButton from '../../components/LinkButton';
 import style from './CountryPage.module.css'
 
 const CountryPage = () => {
-    const actualCountry = useSelector(active);
     const countries = useSelector(mainPageSelectors.countries);
     const navigate = useNavigate();
+    const { countryId } = useParams();
+    const actualCountry = countries.find(country => country.id === countryId);
     const {name, flag, population, region, capital, subregion, borders, tld, nativeName, currencies, languages} = actualCountry;
     const mainInfo = {
         'native name': nativeName ? valueFromObj(nativeName, 'common') : '',
@@ -23,14 +24,13 @@ const CountryPage = () => {
         'currencies': currencies ? valueFromObj(currencies, 'name'): '',
         'languages': languages ? valueInfo(languages) : '',
     }
-    let namesOfBorders;
+    let sortedBorderArr;
 
     if(countries) {
-        namesOfBorders = borders.map((border) => {
+        sortedBorderArr = borders.map((border) => {
            return countries.find(({cca3}) => cca3 === border);
-        }).map(country => country.name);
+        }).map(country => ({name: country.name, kod: country.cca3}));
     };
-    // console.log('namesOfBorders', namesOfBorders);
     const arrInfo = Object.keys(mainInfo);
     const arrAddedInfo = Object.keys(addedInfo);
     return(
@@ -53,7 +53,7 @@ const CountryPage = () => {
                                 </ul>
                             </div>
                             <div>
-                                <ul>
+                                <ul className={style.listWithAddInfo}>
                                     {arrAddedInfo.map(info => (
                                         <li key={`${info} 1`} className={style.item}><p className={style.detailName}>{`${info}: `}<span className='detailInfo'>{addedInfo[info]}</span></p></li>
                                     ))}
@@ -63,9 +63,11 @@ const CountryPage = () => {
                         <div className={style.bordersWrapper}>
                             <p className={style.detailName}>Border countries: </p>
                             <ul className={style.borders}>
-                                {namesOfBorders && namesOfBorders.map(border=>(
-                                    <li key={border} className='bordersItem'>
-                                        <button className='borderBtn'>{border}</button>
+                                {sortedBorderArr && sortedBorderArr.map(border=>(
+                                    <li key={border.kod} className='bordersItem'>
+                                        <LinkButton to={`/${border.kod}`}>
+                                            {border.name}
+                                        </LinkButton>
                                     </li>
                                 ))}
                             </ul>

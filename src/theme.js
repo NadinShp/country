@@ -6,6 +6,7 @@ export const darkTheme = {
     headerBg: '#2b3945',
     search: '#fff',
     information: '#cbd5e1',
+    hover: '#64748b',
   }
 
 export const lightTheme = {
@@ -14,6 +15,7 @@ export const lightTheme = {
     headerBg: '#fff',
     search: '#cacaca',
     information: '#2b3945',
+    hover: 'rgb(0 0 0 / 5%)',
   }
 
 export const GlobalStyles = createGlobalStyle`
@@ -31,17 +33,10 @@ export const GlobalStyles = createGlobalStyle`
   button {
     color: ${props => props.theme.textColor}
   }
-  .filterByName {
-    background: ${props => props.theme.headerBg};
-    color: ${props => props.theme.search};
-   }
   .iconSearch {
     fill: ${props => props.theme.search};
     color: ${props => props.theme.search};
    }
-  .filterByName.inputSearch {
-    color: ${props => props.theme.search};
-  }
   .inputSearch::placeholder {
     color: ${props => props.theme.textColor};
   }
@@ -60,5 +55,23 @@ export const GlobalStyles = createGlobalStyle`
   }
   .detailInfo {
     color:${props => props.theme.information};
+  }
+  .formControl {
+    background: ${props => props.theme.headerBg};
+  }
+  .selectControl {
+    color: ${props => props.theme.textColor};
+    background: ${props => props.theme.headerBg};
+  }
+  .filterInput {
+    color: ${props => props.theme.textColor};
+    background: ${props => props.theme.headerBg};
+  }
+  .selectBox, .selectHeader {
+    color: ${props => props.theme.information};
+    background: ${props => props.theme.headerBg};
+  }
+  .option:hover, option-focus {
+    background: ${props => props.theme.hover}
   }
    `
