@@ -9,8 +9,12 @@ const MainPage = () => {
 
     return(
         <Container>
-            <AppBar />
-            {countries && <CountryList />}
+            {countries && (
+            <>
+                <AppBar />
+                <CountryList />
+            </>
+            )}
         </Container>
     )
 };
