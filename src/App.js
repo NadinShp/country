@@ -7,7 +7,7 @@ import {useDispatch} from 'react-redux';
 import {useState} from 'react';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme, GlobalStyles } from './theme';
-import {chooseTheme} from './components/AppBar/actions';
+import {chooseTheme} from './containers/MainPage/actions';
 import './global/styles/index.css';
 
 const NotFound = lazy(() => import('./containers/NotFound'));

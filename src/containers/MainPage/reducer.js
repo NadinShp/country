@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import {getCountries} from './actions';
+import {combineReducers} from 'redux';
+import {getCountries, chooseTheme, choseRegion, changeFilter, chosenCountry} from './actions';
 
 const initialState = {
     loading: false,
@@ -23,4 +24,28 @@ const mainReducer = createReducer(initialState, {
     },
 });
 
-export default mainReducer;
+const theme = createReducer('', {
+    [chooseTheme]: (_, {payload}) => payload,
+});
+
+const region = createReducer('', {
+    [choseRegion]: (_, {payload}) => payload,
+});
+
+const filter = createReducer('', {
+    [changeFilter]: (_, {payload}) => payload,
+});
+
+const active = createReducer('', {
+    [chosenCountry]: (_, {payload}) => payload,
+});
+
+const mainPageReducer = combineReducers({
+    mainReducer,
+    theme,
+    region,
+    filter,
+    active
+});
+
+export default mainPageReducer;

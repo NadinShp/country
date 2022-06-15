@@ -1,6 +1,6 @@
 import '../../global/styles/index.css';
 import {useDispatch} from 'react-redux';
-import {chosenCountry} from '../CountryCard/actions';
+import {chosenCountry} from '../../containers/MainPage/actions';
 import style from './CountryCard.module.css';
 import {useNavigate} from 'react-router-dom';
 

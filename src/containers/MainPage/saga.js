@@ -9,7 +9,7 @@ export function* getCountriesSaga(){
         const countries = response.data.map(helper);
         yield put(getCountries.success(countries));
     } catch(error) {
-        console.log(error);
+        yield put(getCountries.error(error));
     };
 }
 

@@ -2,14 +2,12 @@ import {useSelector} from 'react-redux';
 import mainPageSelectors from '../../containers/MainPage/selectors';
 import CountryCard from '../CountryCard';
 import {filteredCountriesByRegion} from './helper';
-import {region} from '../Select/selectors';
-import filterSelector from '../Input/selectors';
 import  '../../global/styles/index.css';
 
 const CountryList = () => {
     const countries = useSelector(mainPageSelectors.countries);
-    const filter = useSelector(filterSelector.filterValue);
-    const chosenRegion = useSelector(region);
+    const filter = useSelector(mainPageSelectors.filterValue);
+    const chosenRegion = useSelector(mainPageSelectors.region);
     let filteredArr;
     let filteredCountriesByRegionAndName;
     if (countries){

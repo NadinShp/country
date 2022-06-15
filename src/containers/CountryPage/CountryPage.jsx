@@ -1,4 +1,5 @@
 import {useSelector} from 'react-redux';
+import {memo} from 'react';
 import mainPageSelectors from '../../containers/MainPage/selectors';
 import {useNavigate, useParams} from 'react-router-dom';
 import {valueFromObj, valueToString, valueInfo} from './helpers';
@@ -79,4 +80,4 @@ const CountryPage = () => {
     )
 };
 
-export default CountryPage;
+export default memo(CountryPage);

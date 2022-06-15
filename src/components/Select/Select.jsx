@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import {choseRegion} from './actions';
+import {choseRegion} from '../../containers/MainPage/actions';
 import FilterItem from './FilterItem';
 import style from './Select.module.css';
 

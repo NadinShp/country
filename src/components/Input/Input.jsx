@@ -3,17 +3,16 @@ import {useSelector, useDispatch} from 'react-redux';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
-import {changeFilter} from './actions';
-import {actualTheme} from '../AppBar/selectors';
-import filterSelector from './selectors';
+import {changeFilter} from '../../containers/MainPage/actions';
+import mainPageSelectors from '../../containers/MainPage/selectors';
 import { ThemeProvider  } from '@mui/material/styles';
 import {theme} from './theme';
 import '../../global/styles/index.css';
 
 const Input = () => {
     const dispatch = useDispatch();
-    const filter = useSelector(filterSelector.filterValue);
-    const activeTheme = useSelector(actualTheme) || 'light';
+    const filter = useSelector(mainPageSelectors.filterValue);
+    const activeTheme = useSelector(mainPageSelectors.actualTheme) || 'light';
     const onChangeFilterValue = useCallback(
         e => {
           dispatch(changeFilter(e.target.value));

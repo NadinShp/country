@@ -15,8 +15,7 @@ const Header = ({onClick, isDark}) => {
                         type='button'
                         className={style.modeBtn}
                         onClick={onClick}>
-                        {isDark && <ion-icon name='moon' />}
-                        {isDark || <ion-icon name='moon-outline' />}
+                            {isDark ? <ion-icon name='moon' /> : <ion-icon name='moon-outline' />}
                         Dark Mode
                     </button>
                 </div>
