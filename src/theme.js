@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import {createGlobalStyle} from 'styled-components';
 
 export const darkTheme = {
     body: '#202c37',

@@ -6,13 +6,15 @@ import {valueFromObj, valueToString, valueInfo} from './helpers';
 import Container from '../../components/Container';
 import LinkButton from '../../components/LinkButton';
 import style from './CountryPage.module.css'
+import Error from '../../components/Error';
 
 const CountryPage = () => {
     const countries = useSelector(mainPageSelectors.countries);
     const navigate = useNavigate();
     const { countryId } = useParams();
-    const actualCountry = countries.find(country => country.id === countryId);
-    const {name, flag, population, region, capital, subregion, borders, tld, nativeName, currencies, languages} = actualCountry;
+    let actualCountry = countries ? countries.find(country => country.id === countryId) : {};
+    actualCountry = actualCountry ? actualCountry : {};
+    let {name, flag, population, region, capital, subregion, borders, tld, nativeName, currencies, languages} = actualCountry;
     const mainInfo = {
         'native name': nativeName ? valueFromObj(nativeName, 'common') : '',
         'population': population,
@@ -27,7 +29,7 @@ const CountryPage = () => {
     }
     let sortedBorderArr;
 
-    if(countries) {
+    if(countries && borders) {
         sortedBorderArr = borders.map((border) => {
            return countries.find(({cca3}) => cca3 === border);
         }).map(country => ({name: country.name, kod: country.cca3}));
@@ -40,7 +42,7 @@ const CountryPage = () => {
                 <ion-icon name='arrow-back-outline' />
                 Back
             </button>
-            {actualCountry && (
+            {name ? (
                 <main className={style.main}>
                     <img className={style.imgOneCountry} src={flag} alt={`flag of${name}`}/>
                     <div className={style.informationWrap}>
@@ -75,7 +77,8 @@ const CountryPage = () => {
                         </div>
                     </div>
                 </main>
-            )}
+            )
+        : <Error message={`${countryId} not found`}/>}
         </Container>
     )
 };
